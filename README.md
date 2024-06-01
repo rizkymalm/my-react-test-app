@@ -44,11 +44,17 @@ npm start
 yarn start
 ```
 
+### `4. Open website`
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
+
+use username and password below
+### username: emilys
+### password: emilyspass
+
 
 
 ## Architecture
@@ -87,12 +93,15 @@ I used api from dummyjson.com
 
 the `PUT` and `DELETE` method just return response. the data cannot deleted or updated
 
+
+## Video Demo
+[![Video Demo](https://img.youtube.com/vi/bnaYQ2rs674/0.jpg)](https://www.youtube.com/watch?v=bnaYQ2rs674)
+
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
-
 
 <h3 align="left">Connect with me:</h3>
 <p align="left">
