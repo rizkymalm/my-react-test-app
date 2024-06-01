@@ -1,13 +1,16 @@
 import React from 'react';
 import './App.css';
-import { Provider } from "react-redux";
+import { Provider } from 'react-redux';
 import Router from './routes';
 import { store } from './redux/store';
+import ThemeProvider from './themes';
 
 function App() {
   return (
     <Provider store={store}>
-      <Router />
+      <ThemeProvider>
+        <Router />
+      </ThemeProvider>
     </Provider>
   );
 }

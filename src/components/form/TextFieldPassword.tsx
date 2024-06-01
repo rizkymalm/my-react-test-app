@@ -17,6 +17,7 @@ interface Props {
   onChange: any;
   error?: any;
   helperText?: string;
+  margin?: any;
 }
 
 const TextFieldPassword = ({
@@ -26,6 +27,7 @@ const TextFieldPassword = ({
   onChange,
   error,
   helperText,
+  margin,
 }: Props) => {
   const [showPassword, setShowPassword] = React.useState(false);
 
@@ -41,6 +43,7 @@ const TextFieldPassword = ({
         fullWidth={fullWidth}
         onChange={onChange}
         error={error}
+        margin={margin}
         endAdornment={
           <InputAdornment position="end">
             <IconButton

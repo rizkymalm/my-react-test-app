@@ -2,6 +2,7 @@ import storage from 'redux-persist/lib/storage';
 import { combineReducers } from 'redux';
 import { persistReducer } from 'redux-persist';
 import { authReducers } from './authReducer';
+import { userReducers } from './userReducers';
 
 const persistConfig = {
   key: 'KadenceInternalCosting',
@@ -10,6 +11,7 @@ const persistConfig = {
 
 const appReducer = combineReducers({
   auth: authReducers,
+  user: userReducers
 });
 
 const rootReducer = (state: any, action: any) => {
