@@ -4,6 +4,7 @@ import {
   userList,
   userDetail,
   userDelete,
+  userUpdate,
 } from '../../services/allService';
 import { Dispatch } from '../types';
 import { postRefreshToken } from './auth';
@@ -12,6 +13,7 @@ interface UserProps {
   params?: any;
   callback?: any;
   user?: string;
+  data?: any;
 }
 
 export const getUserProfile =
@@ -137,6 +139,40 @@ export const deleteUser =
             postRefreshToken({
               callback: () => {
                 dispatch(deleteUser({ user, callback }));
+              },
+            })
+          );
+        } else {
+          dispatch({
+            type: 'USER_ACTIONS_ERROR',
+            payload: error.response.data,
+          });
+        }
+      }
+    }
+  };
+
+export const putUpdateUser =
+  ({ user, data, callback }: UserProps) =>
+  async (dispatch: Dispatch, getState: any) => {
+    dispatch({
+      type: 'USER_ACTIONS_LOADING',
+    });
+    try {
+      const { token } = getState().auth;
+      const response: any = await userUpdate(token, user, data);
+      dispatch({
+        type: 'USER_ACTIONS_SUCCESS',
+        payload: response,
+      });
+      callback();
+    } catch (error: any) {
+      if (error.response) {
+        if (error.response.data.name === 'TokenExpiredError') {
+          dispatch(
+            postRefreshToken({
+              callback: () => {
+                dispatch(putUpdateUser({ user, data, callback }));
               },
             })
           );

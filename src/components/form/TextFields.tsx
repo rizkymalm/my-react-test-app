@@ -10,6 +10,7 @@ interface Props {
   fullWidth?: boolean;
   margin?: any;
   error?: any;
+  value?: any;
 }
 
 const TextFields = ({
@@ -19,7 +20,8 @@ const TextFields = ({
   onChange,
   fullWidth,
   margin,
-  error
+  error,
+  value,
 }: Props) => {
   return (
     <TextField
@@ -30,6 +32,7 @@ const TextFields = ({
       margin={margin}
       onChange={onChange}
       error={error}
+      defaultValue={value}
     />
   );
 };
@@ -41,6 +44,7 @@ TextFields.propTypes = {
   fullWidth: PropTypes.bool,
   margin: PropTypes.any,
   onChange: PropTypes.func,
+  value: PropTypes.any,
 };
 
 export default TextFields;

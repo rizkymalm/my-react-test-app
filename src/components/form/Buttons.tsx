@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 //mui
-import { Button } from '@mui/material';
+import { Button, CircularProgress } from '@mui/material';
 
 interface Props {
   text: string;
@@ -9,7 +9,9 @@ interface Props {
   startIcon?: any;
   endIcon?: any;
   type?: any;
-  onClick: () => void;
+  onClick?: () => void;
+  loading?: boolean;
+  disabled?: boolean;
 }
 
 const Buttons = ({
@@ -20,6 +22,8 @@ const Buttons = ({
   endIcon,
   type,
   onClick,
+  loading,
+  disabled,
 }: Props) => {
   return (
     <Button
@@ -29,8 +33,9 @@ const Buttons = ({
       endIcon={endIcon}
       fullWidth={fullWidth}
       type={type}
+      disabled={disabled}
     >
-      {text}
+      {loading ? <CircularProgress /> : text}
     </Button>
   );
 };
@@ -43,6 +48,8 @@ Buttons.propTypes = {
   endIcon: PropTypes.any,
   type: PropTypes.any,
   onClick: PropTypes.func.isRequired,
+  loading: PropTypes.bool,
+  disabled: PropTypes.bool,
 };
 
 export default Buttons;

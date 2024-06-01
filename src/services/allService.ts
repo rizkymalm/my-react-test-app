@@ -57,3 +57,13 @@ export const userDelete = async (token: string, id: any) => {
   });
   return response;
 };
+
+export const userUpdate = async (token: string, id: any, data: any) => {
+  const url = `${baseUrl.API_USER}/${id}`;
+  const response = await axios.Put({
+    url,
+    token,
+    data,
+  });
+  return response;
+};

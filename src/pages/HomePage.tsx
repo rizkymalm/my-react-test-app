@@ -18,19 +18,22 @@ import Page from '../components/Page';
 import { getUserProfile } from '../redux/actions/user';
 import palette from '../themes/palette';
 import UserList from './sections/UserList';
+import { Buttons } from '../components/form';
 
 const HomePage = () => {
   const dispatch = useDispatch();
   const userState = useSelector((state: any) => state.user);
   useEffect(() => {
     async function _getUserProfile() {
-      await dispatch<any>(
-        getUserProfile({})
-      );
+      await dispatch<any>(getUserProfile({}));
     }
     _getUserProfile();
   }, [dispatch]);
-
+  const handleLogout = () => {
+    dispatch({
+      type: 'LOGOUT',
+    });
+  };
   return (
     <Page title="Home Page">
       <Container maxWidth="lg" sx={{ maxHeight: '100vh' }}>
@@ -104,6 +107,9 @@ const HomePage = () => {
                       </TableRow>
                     </TableBody>
                   </Table>
+                </Grid>
+                <Grid item xs={12} md={12} xl={12}>
+                  <Buttons text="Logout" onClick={handleLogout} fullWidth />
                 </Grid>
               </Grid>
             </Card>

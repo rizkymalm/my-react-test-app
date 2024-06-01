@@ -30,12 +30,14 @@ import DialogPage from '../../components/DialogPage';
 import palette from '../../themes/palette';
 import UserDetail from './UserDetail';
 import DialogConfirmation from '../../components/DialogConfirmation';
+import UserEdit from './UserEdit';
 
 const headerTable = ['Name', 'Age', 'Email', 'Phone Number', ''];
 
 const UserList = () => {
   const dispatch = useDispatch();
   const userState = useSelector((state: any) => state.user);
+  const [dialogType, setDialogType] = useState<string>('');
   const [openDialog, seOpenDialog] = useState<boolean>(false);
   const [openDialogConfirmation, setOpenDialogConfirmation] =
     useState<boolean>(false);
@@ -71,11 +73,12 @@ const UserList = () => {
     });
   };
 
-  const _getUserDetail = async (id: any) => {
+  const _getUserDetail = async (id: any, type: string) => {
     dispatch<any>(
       await getUserDetail({
         user: id,
         callback: () => {
+          setDialogType(type);
           seOpenDialog(true);
         },
       })
@@ -101,7 +104,7 @@ const UserList = () => {
       <DialogPage
         open={openDialog}
         title={`${userState?.detail?.data?.firstName} ${userState?.detail?.data?.lastName}`}
-        content={<UserDetail />}
+        content={dialogType === 'detail' ? <UserDetail /> : <UserEdit />}
         onClose={() => seOpenDialog(false)}
         maxWidth="xs"
         fullWidth
@@ -145,7 +148,9 @@ const UserList = () => {
                     <TableCell>
                       <Stack direction={'row'}>
                         <Tooltip title="View User" arrow>
-                          <IconButton onClick={() => _getUserDetail(data.id)}>
+                          <IconButton
+                            onClick={() => _getUserDetail(data.id, 'detail')}
+                          >
                             <RemoveRedEyeIcon
                               sx={{
                                 fontSize: '14px',
@@ -155,7 +160,9 @@ const UserList = () => {
                           </IconButton>
                         </Tooltip>
                         <Tooltip title="Edit User" arrow>
-                          <IconButton>
+                          <IconButton
+                            onClick={() => _getUserDetail(data.id, 'edit')}
+                          >
                             <EditIcon
                               sx={{
                                 fontSize: '14px',
