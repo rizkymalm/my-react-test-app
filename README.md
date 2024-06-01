@@ -52,8 +52,8 @@ The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
 use username and password below
-### username: emilys
-### password: emilyspass
+- **Username**: emilys
+- **Password**: emilyspass
 
 
 
@@ -80,6 +80,7 @@ src/
 ## Api Documentation
 
 I used api from dummyjson.com
+dummyjson use JWT token for authentication
 
 | resource                                 | description                            |
 | :--------------------------------------- | :------------------------------------- |
