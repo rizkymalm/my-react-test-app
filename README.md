@@ -28,6 +28,11 @@ yarn install
 ### `2. Env`
 
 Copy .env.example to .env
+you can copy the file or copy this
+```bash
+REACT_APP_API_AUTH_SERVICE=https://dummyjson.com/auth/
+REACT_APP_API_USER_SERVICE=https://dummyjson.com/users/
+```
 
 ### `3. Start`
 #### NPM
@@ -46,6 +51,41 @@ The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
 
+## Architecture
+
+```
+src/
+├── assets/
+├── components/
+|   ├── form
+├── hooks/
+├── pages/
+|   ├── sections
+├── redux/
+|   ├── actions
+|   ├── reducers
+├── services/
+├── themes/
+|   ├── overrides
+├── features/
+├── utils/
+```
+
+## Api Documentation
+
+I used api from dummyjson.com
+
+| resource                                 | description                            |
+| :--------------------------------------- | :------------------------------------- |
+| POST    `dummyjson.com/auth/login`       | returns a login token                  |
+| POST    `dummyjson.com/auth/refresh`     | returns a token after refresh          |
+| GET     `dummyjson.com/auth/me`          | returns a user profile data            |
+| GET     `dummyjson.com/users`            | returns a user list                    |
+| GET     `dummyjson.com/{id}`             | returns a user profile selected        |
+| DELETE  `dummyjson.com/{id}`             | returns a user profile selected        |
+| PUT     `dummyjson.com/{id}`             | returns a user profile selected        |
+
+the `PUT` and `DELETE` method just return response. the data cannot deleted or updated
 
 ## Learn More
 
