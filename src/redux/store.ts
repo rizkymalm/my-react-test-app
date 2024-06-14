@@ -11,7 +11,7 @@ const middleware: any[] = [thunk];
 const store = createStore(
   rootReducer,
   initialState,
-  composeWithDevTools(applyMiddleware(...middleware))
+  applyMiddleware(...middleware)
 );
 
 const persistor = persistStore(store);
